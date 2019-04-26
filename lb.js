@@ -42,5 +42,4 @@ function getLeaderboard(){
   document.getElementById("leaderboard").innerHTML = champs.join(", ");
 }
 
-setTimeout(getLeaderboard, 500)
-
+getLeaderboard();
