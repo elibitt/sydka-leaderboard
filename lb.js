@@ -30,14 +30,17 @@ function writeUserData(username, points) {
     points: parseInt(points)
   });
 }
-
-//Get data
-var champs = [];
-var scoreRef = database.ref('users/').orderByChild("points").limitToLast(5);
-scoreRef.on('value', function(snapshot) {
-  snapshot.forEach(child => {
-      champs.unshift(child.key+": "+child.val().points);
+function getLeaderboard(){
+  //Get data
+  var champs = [];
+  var scoreRef = database.ref('users/').orderByChild("points").limitToLast(5);
+  scoreRef.on('value', function(snapshot) {
+    snapshot.forEach(child => {
+        champs.unshift(child.key+": "+child.val().points);
+    });
   });
-});
-document.getElementById("leaderboard").innerHTML = champs.join(", ");
+  document.getElementById("leaderboard").innerHTML = champs.join(", ");
+}
+
+setTimeout(getLeaderboard, 500)
 
