@@ -12,7 +12,7 @@ var database = firebase.database();
 
 
 function writeUserData(username, points) {
-  firebase.database().ref('users/' + userId).set({
+  firebase.database().ref('users/' + username).set({
     points: points
   });
 }
