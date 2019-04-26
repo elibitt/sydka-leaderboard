@@ -5,12 +5,16 @@
   <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
   <script defer src="./lb.js"></script>
  </head>
- <body onload="getLeaderboard();">
+ <body onload="getLeaderboard()">
   <h3>Leaderboard: </h3>
   <button onclick="getLeaderboard()">Return Data</button>
 
 </br>
 <span id="leaderboard"></span>
+
+<script type="text/javascript">
+  window.onload = getLeaderboard;
+</script>
 
 </body>
 </html>
