@@ -18,13 +18,10 @@ function writeUserData(username, points) {
 }
 
 function readUserPoints(username) {
-  var retString = "";
+
   var scoreRef = database.ref('users/').orderByChild("points").limitToFirst(5);
-  scoreRef.once('child_added', function(snapshot) {
-    retString += JSON.stringify(snapshot.val());
-    console.log(snapshot.val());
-    
+  scoreRef.on('value', function(snapshot) {
+    document.getElementById("leaderboard").innerHTML = JSON.stringify(snapshot.val());
   });
-  document.getElementById("leaderboard").innerHTML = retString;
 
 }
