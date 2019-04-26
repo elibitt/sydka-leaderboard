@@ -18,20 +18,26 @@ if (urlParams.has('update')){
   writeUserData(un, newPoints);
 }
 
+if (urlParams.has('remove')){
+  var un = urlParams.get('username');
+  var unRef = database.ref('users/'+un);
+  unRef.remove();
+
+}
+
 function writeUserData(username, points) {
   database.ref('users/' + username).set({
     points: parseInt(points)
   });
 }
 
-function readUserPoints(username) {
-  var champs = [];
-  var scoreRef = database.ref('users/').orderByChild("points").limitToLast(5);
-  scoreRef.on('value', function(snapshot) {
-    snapshot.forEach(child => {
-        champs.unshift(child.key+": "+child.val().points);
-    });
+//Get data
+var champs = [];
+var scoreRef = database.ref('users/').orderByChild("points").limitToLast(5);
+scoreRef.on('value', function(snapshot) {
+  snapshot.forEach(child => {
+      champs.unshift(child.key+": "+child.val().points);
   });
-  document.getElementById("leaderboard").innerHTML = champs.join(", ");
+});
+document.getElementById("leaderboard").innerHTML = champs.join(", ");
 
-}
