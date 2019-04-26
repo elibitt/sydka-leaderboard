@@ -50,6 +50,9 @@ function getLeaderboard(){
     //document.getElementById("leaderboard").innerHTML = champs.join(", ");
     var para = document.createElement('p');
     para.appendChild(document.createTextNode(champs.join(", ")));
+    var element = document.getElementById("lb");
+    element.appendChild(para);
+
   }, function(error) {
   // The callback failed.
   console.error(error);
