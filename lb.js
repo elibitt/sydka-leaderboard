@@ -18,6 +18,7 @@ function writeUserData(username, points) {
 }
 
 function readUserPoints(username) {
+  console.log("hello?");
   console.log( firebase.database().ref('/users/' + username).once('value') );
 
 }
