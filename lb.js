@@ -23,7 +23,7 @@ function readUserPoints(username) {
   scoreRef.on('value', function(snapshot) {
     document.getElementById("leaderboard").innerHTML = JSON.stringify(snapshot.val());
     snapshot.forEach(child => {
-        champs.unshift(child);
+        champs.unshift(JSON.stringify(child.key)+": "+JSON.stringify(child.val()));
     });
   });
   console.log(champs);
