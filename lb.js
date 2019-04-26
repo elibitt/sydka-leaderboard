@@ -52,6 +52,9 @@ function getLeaderboard(){
     para.appendChild(document.createTextNode(champs.join(", ")));
     var element = document.getElementById("lb");
     element.appendChild(para);
+    setTimeout(function(){
+    console.log("done");
+    }, 1000);
 
   }, function(error) {
   // The callback failed.
@@ -59,4 +62,5 @@ function getLeaderboard(){
   });
   
 }
+
 
