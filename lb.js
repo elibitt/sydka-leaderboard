@@ -42,15 +42,16 @@ function getLeaderboard(){
   var champs = [];
   var scoreRef = database.ref('users/').orderByChild("points").limitToLast(5);
   console.log(scoreRef);
-  scoreRef.once('value', function(snapshot) {
+  return scoreRef.once('value', function(snapshot) {
     snapshot.forEach(child => {
         champs.unshift(child.key+": "+child.val().points);
     });
+    console.log(champs);
+    document.getElementById("leaderboard").innerHTML = champs.join(", ");
   }, function(error) {
   // The callback failed.
   console.error(error);
   });
-  console.log(champs);
-  document.getElementById("leaderboard").innerHTML = champs.join(", ");
+  
 }
 
