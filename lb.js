@@ -20,11 +20,11 @@ function writeUserData(username, points) {
 function readUserPoints(username) {
   var retString = "";
   var scoreRef = database.ref('users/').orderByChild("points").limitToFirst(5);
-  scoreRef.on('value', function(snapshot) {
-    snapshot.forEach(child => {
-      retString += child.key + ": " + child.val()
-    });
-    document.getElementById("leaderboard").innerHTML = retString;
+  scoreRef.once('child_added', function(snapshot) {
+    retString += JSON.stringify(snapshot.val());
+    console.log(snapshot.val());
+    
   });
+  document.getElementById("leaderboard").innerHTML = retString;
 
 }
