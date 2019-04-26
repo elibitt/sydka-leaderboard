@@ -21,7 +21,7 @@ function readUserPoints(username) {
 
   var scoreRef = database.ref('users/').orderByChild("points").limitToFirst(5);
   scoreRef.on('value', function(snapshot) {
-    document.getElementById("leaderboard").innerHTML = snapshot.val();
+    document.getElementById("leaderboard").innerHTML = JSON.stringify(snapshot.val());
   });
 
 }
