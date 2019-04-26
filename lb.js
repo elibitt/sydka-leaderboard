@@ -18,6 +18,7 @@ function writeUserData(username, points) {
 }
 
 function readUserPoints(username) {
+
   var result = database.ref('users/').orderByChild("points").limitToFirst(5);
   document.getElementById("leaderboard").innerHTML = result;
 
