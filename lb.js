@@ -21,11 +21,10 @@ function readUserPoints(username) {
   var champs = [];
   var scoreRef = database.ref('users/').orderByChild("points").limitToLast(5);
   scoreRef.on('value', function(snapshot) {
-    document.getElementById("leaderboard").innerHTML = JSON.stringify(snapshot.val());
     snapshot.forEach(child => {
         champs.unshift(child.key+": "+child.val().points);
     });
   });
-  console.log(champs);
+  document.getElementById("leaderboard").innerHTML = champs.join(", ");
 
 }
