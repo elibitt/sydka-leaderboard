@@ -13,7 +13,7 @@ var database = firebase.database();
 
 function writeUserData(username, points) {
   database.ref('users/' + username).set({
-    points: points
+    points: parseInt(points)
   });
 }
 
