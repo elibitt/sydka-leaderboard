@@ -44,9 +44,7 @@ function getLeaderboard(){
     snapshot.forEach(child => {
         champs.unshift(child.key+": "+child.val().points);
     });
-  }).then(function() {document.getElementById("leaderboard").innerHTML = champs.join(", ");});
-  
+  });
+  document.getElementById("leaderboard").innerHTML = champs.join(", ");
 }
-
-  getLeaderboard();
 
