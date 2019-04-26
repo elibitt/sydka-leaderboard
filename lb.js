@@ -48,5 +48,7 @@ function getLeaderboard(){
   document.getElementById("leaderboard").innerHTML = champs.join(", ");
 }
 
-getLeaderboard();
-getLeaderboard();
+while (document.getElementById("leaderboard").innerHTML == "Loading..."){
+  getLeaderboard();
+}
+
