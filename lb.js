@@ -38,13 +38,16 @@ function writeUserData(username, points) {
 }
 function getLeaderboard(){
   //Get data
+  console.log("running");
   var champs = [];
   var scoreRef = database.ref('users/').orderByChild("points").limitToLast(5);
+  console.log(scoreRef);
   scoreRef.on('value', function(snapshot) {
     snapshot.forEach(child => {
         champs.unshift(child.key+": "+child.val().points);
     });
   });
+  console.log(champs);
   document.getElementById("leaderboard").innerHTML = champs.join(", ");
 }
 
