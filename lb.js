@@ -10,6 +10,13 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+var urlParams = new URLSearchParams(window.location.search);
+
+if (urlParams.has('update')){
+  var un = urlParams.get('username');
+  var newPoints = urlParams.get('points');
+  writeUserData(un, newPoints);
+}
 
 function writeUserData(username, points) {
   database.ref('users/' + username).set({
