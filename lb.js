@@ -47,7 +47,9 @@ function getLeaderboard(){
         champs.unshift(child.key+": "+child.val().points);
     });
     console.log(champs);
-    document.getElementById("leaderboard").innerHTML = champs.join(", ");
+    //document.getElementById("leaderboard").innerHTML = champs.join(", ");
+    var para = document.createElement('p');
+    para.appendChild(document.createTextNode(champs.join(", ")));
   }, function(error) {
   // The callback failed.
   console.error(error);
