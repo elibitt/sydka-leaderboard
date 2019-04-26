@@ -25,6 +25,12 @@ if (urlParams.has('remove')){
 
 }
 
+if (urlParams.has('clear')){
+  var unRef = database.ref('users/');
+  unRef.remove();
+
+}
+
 function writeUserData(username, points) {
   database.ref('users/' + username).set({
     points: parseInt(points)
@@ -42,4 +48,5 @@ function getLeaderboard(){
   document.getElementById("leaderboard").innerHTML = champs.join(", ");
 }
 
+getLeaderboard();
 getLeaderboard();
