@@ -12,12 +12,13 @@ var database = firebase.database();
 
 
 function writeUserData(username, points) {
-  firebase.database().ref('users/' + userId).set({
+  database.ref('users/' + username).set({
     points: points
   });
 }
 
 function readUserPoints(username) {
-  console.log( firebase.database().ref('/users/' + username).once('value') );
+  var result = database.ref('users/').orderByChild("points").limitToFirst(5);
+  document.getElementById("leaderboard").innerHTML = result;
 
 }
